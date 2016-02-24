@@ -42,9 +42,7 @@ class GameViewController: UIViewController {
     
       tappedView in
       
-      let shape1 = shapes.0 as! SquareShape, shape2 = shapes.1 as! SquareShape
-      
-      self.gameView.score += shape1.sideLength >= shape2.sideLength ? 1 : -1
+      self.gameView.score += shapes.0.area >= shapes.1.area ? 1 : -1
       
       self.beginNextTurn()
     }
@@ -53,9 +51,7 @@ class GameViewController: UIViewController {
     
       tappedView in
       
-      let shape1 = shapes.0 as! SquareShape, shape2 = shapes.1 as! SquareShape
-      
-      self.gameView.score += shape2.sideLength >= shape1.sideLength ? 1 : -1
+      self.gameView.score += shapes.1.area >= shapes.0.area ? 1 : -1
       
       self.beginNextTurn()
     }

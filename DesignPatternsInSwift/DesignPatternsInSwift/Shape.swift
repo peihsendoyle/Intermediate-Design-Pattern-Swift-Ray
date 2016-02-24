@@ -11,9 +11,13 @@ import UIKit
 
 class Shape {
   
+  var area: CGFloat { return 0 }
+  
 }
 
 class SquareShape: Shape {
   
   var sideLength: CGFloat!
+  
+  override var area: CGFloat { return sideLength * sideLength }
 }
