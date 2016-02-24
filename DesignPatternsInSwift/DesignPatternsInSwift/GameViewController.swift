@@ -20,9 +20,9 @@ class GameViewController: UIViewController {
     
     super.viewDidLoad()
     
-    shapeViewFactory = SquareShapeViewFactory(size: gameView.sizeAvailableForShapes())
+    shapeViewFactory = CircleShapeViewFactory(size: gameView.sizeAvailableForShapes())
     
-    shapeFactory = SquareShapeFactory(minProportion: 0.3, maxProportion: 0.8)
+    shapeFactory = CircleShapeFactory(minProportion: 0.3, maxProportion: 0.8)
     
     beginNextTurn()
   }
