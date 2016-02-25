@@ -12,29 +12,37 @@ class GameViewController: UIViewController {
   
   private var gameView: GameView { return view as! GameView }
   
-  private var shapeViewFactory: ShapeViewFactory!
-  
-  private var shapeFactory: ShapeFactory!
-  
-  private var shapeViewBuilder: ShapeViewBuilder!
-  
   private var turnController: TurnController!
 
   override func viewDidLoad() {
     
     super.viewDidLoad()
     
-    shapeViewFactory = SquareShapeViewFactory(size: gameView.sizeAvailableForShapes())
+    // Square Strategy
     
-    shapeFactory = SquareShapeFactory(minProportion: 0.3, maxProportion: 0.8)
+    let squareShapeViewFactory = SquareShapeViewFactory(size: gameView.sizeAvailableForShapes())
     
-    shapeViewBuilder = ShapeViewBuilder(shapeViewFactory: shapeViewFactory)
+    let squareShapeFactory = SquareShapeFactory(minProportion: 0.3, maxProportion: 0.8)
     
-    shapeViewBuilder.fillColor = UIColor.greenColor()
+    let squareShapeViewBuilder = shapeViewBuilderForFactory(squareShapeViewFactory)
     
-    shapeViewBuilder.outlineColor = UIColor.blueColor()
+    let squareTurnStrategy = BasicTurnStrategy(shapeFactory: squareShapeFactory, shapeViewBuilder: squareShapeViewBuilder)
     
-    turnController = TurnController(shapeFactory: shapeFactory, shapeViewBuidler: shapeViewBuilder)
+    // Circle Strategy
+    
+    let circleShapeViewFactory = CircleShapeViewFactory(size: gameView.sizeAvailableForShapes())
+    
+    let circleShapeFactory = CircleShapeFactory(minProportion: 0.3, maxProportion: 0.8)
+    
+    let circleShapeViewBuilder = shapeViewBuilderForFactory(circleShapeViewFactory)
+    
+    let circleTurnStrategy = BasicTurnStrategy(shapeFactory: circleShapeFactory, shapeViewBuilder: circleShapeViewBuilder)
+    
+    let randomTurnStrategy = RandomTurnStrategy(firstStrategy: squareTurnStrategy, secondStrategy: circleTurnStrategy)
+    
+    // Create a Turn Controller instance to use 2 random strategies
+    
+    turnController = TurnController(turnStrategy: randomTurnStrategy)
     
     beginNextTurn()
   }
@@ -42,6 +50,19 @@ class GameViewController: UIViewController {
   override func prefersStatusBarHidden() -> Bool {
     
     return true
+  }
+  
+  // A new private function to create an instance of ShapeViewBuilder to handle colors.
+  
+  private func shapeViewBuilderForFactory(shapeViewFactory: ShapeViewFactory) -> ShapeViewBuilder {
+    
+    let shapeViewBuilder = ShapeViewBuilder(shapeViewFactory: shapeViewFactory)
+    
+    shapeViewBuilder.fillColor = UIColor.blueColor()
+    
+    shapeViewBuilder.outlineColor = UIColor.greenColor()
+    
+    return shapeViewBuilder
   }
   
   private func beginNextTurn() {

@@ -8,28 +8,24 @@
 
 import Foundation
 
+//Strategy Pattern
+
 class TurnController {
   
-  private let shapeFactory: ShapeFactory
+  private let turnStrategy: TurnStrategy
   
-  private let shapeViewBuidler: ShapeViewBuilder
+  init(turnStrategy: TurnStrategy) {
+    
+    self.turnStrategy = turnStrategy
+  }
   
   var currentTurn: Turn?
   
-  var pastTurn: [Turn] = [Turn]()
-  
-  init(shapeFactory: ShapeFactory, shapeViewBuidler: ShapeViewBuilder) {
-    
-    self.shapeFactory = shapeFactory
-    
-    self.shapeViewBuidler = shapeViewBuidler
-  }
+  var pastTurns: [Turn] = [Turn]()
   
   func beginNewTurn() -> (ShapeView, ShapeView) {
     
-    let shapes = shapeFactory.createShape()
-    
-    let shapeViews = shapeViewBuidler.buildShapeViewForShapes(shapes)
+    let shapeViews = turnStrategy.makeShapeViewsForNextTurnGivenPastTurns(pastTurns)
     
     currentTurn = Turn(shapes: [shapeViews.0.shape, shapeViews.1.shape])
     
@@ -40,11 +36,10 @@ class TurnController {
     
     currentTurn?.turnCompletedWithTappedShape(tappedShape)
     
-    pastTurn.append(currentTurn!)
+    pastTurns.append(currentTurn!)
     
     let scoreIncrement = currentTurn!.matched! ? 1: -1
     
     return scoreIncrement
-    
   }
 }
