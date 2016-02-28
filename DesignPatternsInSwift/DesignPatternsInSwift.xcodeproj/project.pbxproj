@@ -13,6 +13,7 @@
 		4C1E0CFC1C7EA8C20091BAF0 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E0CFB1C7EA8C20091BAF0 /* Turn.swift */; };
 		4C1E0CFE1C7EABC50091BAF0 /* TurnController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E0CFD1C7EABC50091BAF0 /* TurnController.swift */; };
 		4C1E0D021C7EB4840091BAF0 /* TurnStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1E0D011C7EB4840091BAF0 /* TurnStrategy.swift */; };
+		4C24644D1C7F42680063C1C1 /* Scorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24644C1C7F42680063C1C1 /* Scorer.swift */; };
 		5D23FD0019D21A02003F5F4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23FCFF19D21A02003F5F4E /* AppDelegate.swift */; };
 		5D23FD0219D21A02003F5F4E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D23FD0119D21A02003F5F4E /* GameViewController.swift */; };
 		5D23FD0519D21A02003F5F4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D23FD0319D21A02003F5F4E /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		4C1E0CFB1C7EA8C20091BAF0 /* Turn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
 		4C1E0CFD1C7EABC50091BAF0 /* TurnController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnController.swift; sourceTree = "<group>"; };
 		4C1E0D011C7EB4840091BAF0 /* TurnStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnStrategy.swift; sourceTree = "<group>"; };
+		4C24644C1C7F42680063C1C1 /* Scorer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scorer.swift; sourceTree = "<group>"; };
 		5D23FCFA19D21A02003F5F4E /* DesignPatternsInSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignPatternsInSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D23FCFE19D21A02003F5F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D23FCFF19D21A02003F5F4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 			name = Strategy;
 			sourceTree = "<group>";
 		};
+		4C24644E1C7F49C30063C1C1 /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				4C24644C1C7F42680063C1C1 /* Scorer.swift */,
+			);
+			name = Command;
+			sourceTree = "<group>";
+		};
 		5D23FCF119D21A02003F5F4E = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 		5D23FCFC19D21A02003F5F4E /* DesignPatternsInSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4C24644E1C7F49C30063C1C1 /* Command */,
 				4C1E0D001C7EB4650091BAF0 /* Strategy */,
 				4C1E0CFF1C7EB0D60091BAF0 /* Denpendency */,
 				4C1E0CF81C7DF50F0091BAF0 /* Builder */,
@@ -314,6 +325,7 @@
 				5D23FD2419D223C0003F5F4E /* ShapeView.swift in Sources */,
 				4C1E0CF31C7DC6D50091BAF0 /* ShapeFactory.swift in Sources */,
 				5D23FD0019D21A02003F5F4E /* AppDelegate.swift in Sources */,
+				4C24644D1C7F42680063C1C1 /* Scorer.swift in Sources */,
 				4C1E0CFE1C7EABC50091BAF0 /* TurnController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

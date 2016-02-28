@@ -12,11 +12,17 @@ import Foundation
 
 class TurnController {
   
+  private let scorer: Scorer
+  
   private let turnStrategy: TurnStrategy
   
   init(turnStrategy: TurnStrategy) {
     
     self.turnStrategy = turnStrategy
+    
+    self.scorer = MatchScorer()
+    
+    self.scorer.nextScorer = StreakScorer()
   }
   
   var currentTurn: Turn?
@@ -38,7 +44,7 @@ class TurnController {
     
     pastTurns.append(currentTurn!)
     
-    let scoreIncrement = currentTurn!.matched! ? 1: -1
+    let scoreIncrement = scorer.computeScoreIncrement(pastTurns.reverse())
     
     return scoreIncrement
   }
